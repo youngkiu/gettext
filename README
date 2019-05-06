@@ -27,3 +27,16 @@ modify the source code in order to point to our source directory else than /usr/
 ~/gettext$ cp po/fr/hello.mo fr/LC_MESSAGES
 ~/gettext$ ./hello
 ~/gettext$ LANGUAGE=fr ./hello
+
+update source code
+    puts(_("Good night"));
+~/gettext$ xgettext --keyword=_ --language=C --add-comments --sort-output -o po/hello.pot hello.c
+~/gettext$ msgmerge --update po/fr/hello.po po/hello.pot
+update gettext/po/fr/hello.po file
+    msgstr "Bonne nuit"
+~/gettext$ msgfmt --output-file=po/fr/hello.mo po/fr/hello.po
+~/gettext$ mkdir -p fr/LC_MESSAGES
+~/gettext$ cp po/fr/hello.mo fr/LC_MESSAGES
+~/gettext$ make
+~/gettext$ ./hello
+~/gettext$ LANGUAGE=fr ./hello

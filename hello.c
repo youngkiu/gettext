@@ -15,6 +15,7 @@ int main()
 
   /* Example of i18n usage */
   printf(_("Hello World\n"));
+  puts(_("Good night"));
 
   return EXIT_SUCCESS;
 }
