@@ -1,0 +1,20 @@
+https://www.gnu.org/software/gettext/manual/index.html
+https://www.gnu.org/software/gettext/manual/gettext.pdf
+https://www.gnu.org/software/gettext/manual/gettext.html
+http://www.labri.fr/perso/fleury/posts/programming/a-quick-gettext-tutorial.html
+
+
+~/gettext$ mkdir -p po
+~/gettext$ xgettext --keyword=_ --language=C --add-comments --sort-output -o po/hello.pot hello.c
+update gettext/po/hello.pot file
+    "Project-Id-Version: Hello 1.0\n"
+    "Report-Msgid-Bugs-To: andrea@nonymous.net\n"
+    "Content-Type: text/plain; charset=UTF-8\n"
+~/gettext$ mkdir -p po/fr
+~/gettext$ msginit --input=po/hello.pot --locale=fr --output=po/fr/hello.po
+update gettext/po/fr/hello.po file
+    msgstr "Bonjour le monde\n"
+~/gettext$ msgfmt --output-file=po/fr/hello.mo po/fr/hello.po
+~/gettext$ sudo cp po/fr/hello.mo /usr/share/locale/fr/LC_MESSAGES
+~/gettext$ ./hello
+~/gettext$ LANGUAGE=fr ./hello
