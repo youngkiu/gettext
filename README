@@ -16,5 +16,14 @@ update gettext/po/fr/hello.po file
     msgstr "Bonjour le monde\n"
 ~/gettext$ msgfmt --output-file=po/fr/hello.mo po/fr/hello.po
 ~/gettext$ sudo cp po/fr/hello.mo /usr/share/locale/fr/LC_MESSAGES
+~/gettext$ make
+~/gettext$ ./hello
+~/gettext$ LANGUAGE=fr ./hello
+
+modify the source code in order to point to our source directory else than /usr/share/locale
+    bindtextdomain ("hello", getenv("PWD"));
+~/gettext$ make
+~/gettext$ mkdir -p fr/LC_MESSAGES
+~/gettext$ cp po/fr/hello.mo fr/LC_MESSAGES
 ~/gettext$ ./hello
 ~/gettext$ LANGUAGE=fr ./hello

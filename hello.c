@@ -10,7 +10,7 @@ int main()
 {
   /* Setting the i18n environment */
   setlocale (LC_ALL, "");
-  bindtextdomain ("hello", "/usr/share/locale/");
+  bindtextdomain ("hello", getenv("PWD"));
   textdomain ("hello");
 
   /* Example of i18n usage */
